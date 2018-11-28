@@ -27,11 +27,12 @@ def main():
 			if not line:
 				break
 
-			sFileName = os.path.join(sDirectoryName, line[:41]) 
-
+			sFileName = os.path.join(sDirectoryName, line[:40]) 
+			#print line[:41]
 			if not os.path.exists(sFileName):
-				process = subprocess.Popen(['git', 'show', line[:41]], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+				process = subprocess.Popen(['git', 'show', line[:40]], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 				
+				#print process.communicate()[1]
 				with open(sFileName, 'w') as fout: 
 					fout.write(process.communicate()[0])
 
